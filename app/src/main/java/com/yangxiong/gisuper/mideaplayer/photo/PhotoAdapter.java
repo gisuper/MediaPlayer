@@ -79,9 +79,9 @@ class PhotoAdapter extends BaseAdapter {
                     .load(imageBean.path)
                     .into(itemView);
         }
-        itemView.setFocusable(true);
-        itemView.setClickable(true);
-        itemView.setOnClickListener(new View.OnClickListener( ) {
+        holder.itemView.setFocusable(true);
+        holder.itemView.setClickable(true);
+        holder.itemView.setOnClickListener(new View.OnClickListener( ) {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, PhotoShowActivity.class);
