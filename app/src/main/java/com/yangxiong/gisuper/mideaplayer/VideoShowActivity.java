@@ -131,7 +131,7 @@ public class VideoShowActivity extends AppCompatActivity {
         });
 
         videoList = StorageDataManager.getInstance(VideoShowActivity.this)
-                .getVideoList( );
+                  .getVideoList( );
         String uri = videoList.get(position).path;
         mPlayerManager.play(uri);
         vvVideoView.seekTo(2000*10);
