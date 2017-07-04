@@ -245,6 +245,7 @@ public class PlayerManager {
     }
 
     public void onDestroy() {
+        if (orientationEventListener!=null)
         orientationEventListener.disable();
         videoView.stopPlayback();
     }
@@ -430,6 +431,7 @@ public class PlayerManager {
         }
     }
 
+    public String curScaleType= SCALETYPE_FITPARENT;
     /**
      * <pre>
      *     fitParent:可能会剪裁,保持原视频的大小，显示在中心,当原视频的大小超过view的大小超过部分裁剪处理
@@ -442,6 +444,7 @@ public class PlayerManager {
      * @param scaleType
      */
     public void setScaleType(String scaleType) {
+        curScaleType = scaleType;
         if (SCALETYPE_FITPARENT.equals(scaleType)) {
             videoView.setAspectRatio(IRenderView.AR_ASPECT_FIT_PARENT);
         }else if (SCALETYPE_FILLPARENT.equals(scaleType)) {
