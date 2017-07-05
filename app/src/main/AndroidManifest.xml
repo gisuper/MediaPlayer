@@ -36,7 +36,7 @@
             android:theme="@style/FullscreenTheme">
         </activity>
         <activity
-            android:name=".VideoShowActivity"
+            android:name=".video.VideoShowActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_video_show"
             android:theme="@style/FullscreenTheme">

@@ -9,7 +9,6 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.yangxiong.gisuper.mideaplayer.R;
-import com.yangxiong.gisuper.mideaplayer.VideoShowActivity;
 import com.yangxiong.gisuper.mideaplayer.base.BaseAdapter;
 import com.yangxiong.gisuper.mideaplayer.model.VideoBean;
 

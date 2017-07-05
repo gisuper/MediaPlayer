@@ -1,4 +1,4 @@
-package com.yangxiong.gisuper.mideaplayer;
+package com.yangxiong.gisuper.mideaplayer.video;
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -10,8 +10,8 @@ import android.view.MotionEvent;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import com.yangxiong.gisuper.mideaplayer.R;
 import com.yangxiong.gisuper.mideaplayer.global.LogUtil;
-import com.yangxiong.gisuper.mideaplayer.global.Util;
 import com.yangxiong.gisuper.mideaplayer.model.StorageDataManager;
 import com.yangxiong.gisuper.mideaplayer.model.VideoBean;
 
@@ -32,7 +32,8 @@ public class VideoShowActivity extends AppCompatActivity {
     private PlayerManager mPlayerManager;
     private int position;
     private SparseArray<VideoBean> videoList;
-    private TextView tvPosition;
+    private TextView tvDuration;
+    private TextView tvCurProgress;
 
     private Handler mHandler = new Handler( ) {
         @Override
@@ -56,7 +57,8 @@ public class VideoShowActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_video_show);
-        tvPosition = (TextView) findViewById(R.id.tv_position);
+        tvDuration = (TextView) findViewById(R.id.tv_duration);
+        tvCurProgress = (TextView) findViewById(R.id.tv_cur_progress);
         sbProgress = (SeekBar) findViewById(R.id.sb_progress);
         vvVideoView = (IjkVideoView) findViewById(R.id.video_view);
         sbProgress.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener( ) {
@@ -131,17 +133,16 @@ public class VideoShowActivity extends AppCompatActivity {
         });
 
         videoList = StorageDataManager.getInstance(VideoShowActivity.this)
-                  .getVideoList( );
+                .getVideoList( );
         String uri = videoList.get(position).path;
         mPlayerManager.play(uri);
-        vvVideoView.seekTo(2000*10);
+        vvVideoView.seekTo(2000 * 10);
 
     }
 
     private void setCurPosition() {
-        String currentPosition = Util.makeTimeString(mPlayerManager.getCurrentPosition( ))
-                + "/" + Util.makeTimeString(mPlayerManager.getDuration( ));
-        tvPosition.setText(currentPosition);
+        tvDuration.setText(VideoUtil.makeTimeString(mPlayerManager.getDuration( )));
+        tvCurProgress.setText(VideoUtil.makeTimeString(mPlayerManager.getCurrentPosition( )));
 
         sbProgress.setProgress(mPlayerManager.getCurrentPosition( ));
         sbProgress.setMax(mPlayerManager.getDuration( ));

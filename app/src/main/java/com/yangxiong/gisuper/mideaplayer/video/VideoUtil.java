@@ -1,4 +1,4 @@
-package com.yangxiong.gisuper.mideaplayer.global;
+package com.yangxiong.gisuper.mideaplayer.video;
 
 import java.util.Formatter;
 import java.util.Locale;
@@ -7,7 +7,7 @@ import java.util.Locale;
  * Created by yangxiong on 2017/7/2/002.
  */
 
-public class Util
+public class VideoUtil
 
 {
 
@@ -50,4 +50,6 @@ public class Util
         timeArgs[2] = (secs % 3600 % 60) % 60; // 时
         return sFormatter.format(durationformat, timeArgs).toString( ).trim( );
     }
+
+
 }
